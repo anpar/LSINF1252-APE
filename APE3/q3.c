@@ -21,22 +21,27 @@ typedef struct node_t
   struct node_t *next;
 } node;
 
-struct node_t *stack; // sommet de la pile
+// Supprimé pour la q4
+// struct node_t *stack; // sommet de la pile
 
 // ajoute un élément au sommet de la pile
-void push(struct fraction_t f)
+void push(struct node_t *stack, struct fraction_t *f)
 {
   struct node_t *n;
   n=(struct node_t *)malloc(sizeof(struct node_t));
   if(n==NULL)
     exit(EXIT_FAILURE);
-  printf("Adresse de f : %p.\n", &f);
-  n->data = &f;
+  n->data = f;
+  printf("n->data = %p.\n", n->data);
   n->next = stack;
+  printf("n->next = %p.\n", n->next);
   stack = n;
+  printf("stack est à l'adresse %p.\n", stack);
+  printf("stack->data = %p.\n", stack->data);
+  printf("stack->next = %p.\n", stack->next);
 }
 // retire l'élément au sommet de la pile
-struct fraction_t * pop()
+struct fraction_t * pop(struct node_t *stack)
 {
   if(stack==NULL)
     return NULL;
@@ -52,7 +57,7 @@ struct fraction_t * pop()
 ///BBB
 
 // affiche le contenu de la pile
-void display()
+void display(struct node_t *stack)
 {
   struct node_t *t;
   t = stack;
@@ -70,32 +75,28 @@ void display()
 // exemple
 int main(int argc, char *argv[]) {
 
-  struct fraction_t demi={1,2};
-  printf("Adresse de demi : %p.\n", &demi);
+  struct fraction_t demi={1,2}; 
   struct fraction_t tiers={1,3};
-  printf("Adresse de tiers : %p.\n", &tiers);
   struct fraction_t quart={1,4};
-  printf("Adresse de quart : %p.\n", &quart);
   struct fraction_t zero={0,1};
-  printf("Adresse de zero : %p.\n", &zero);
-
 
   // initialisation
-  stack = (struct node_t *)malloc(sizeof(struct node_t));
+  struct node_t *stack = (struct node_t *)malloc(sizeof(struct node_t));
   stack->next=NULL;
   stack->data=NULL;
+  printf("Initialement, stack est à l'adresse %p.\n", stack);
 
-  display();
-  push(zero);
-  display();
-  push(demi);
-  display();
-  push(tiers);
-  display();
-  push(quart);
-  display();
+  display(stack);
+  push(&stack,&zero);
+  display(stack);
+  push(&stack,&demi);
+  display(stack);
+  push(&stack,&tiers);
+  display(stack);
+  push(&stack,&quart);
+  display(stack);
 
-  struct fraction_t *f=pop();
+  struct fraction_t *f=pop(stack);
   if(f!=NULL)
     printf("Popped : %d/%d\n",f->num,f->den);
 
