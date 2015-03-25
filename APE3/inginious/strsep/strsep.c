@@ -2,30 +2,40 @@
 #include <stdlib.h>
 
 char *my_strsep(char **stringp, const char *delim) {
-    if(*stringp == NULL || delim == NULL)
+    char *str = *stringp;
+    char *tok = str;
+
+    if(str == NULL)
         return NULL;
 
-    // Computing the length of the first token
-    int length = 0;
-    char *runner = *stringp;
-    printf("delim = %s.\n", delim);
-    while(runner != 0 && runner != delim) {
-        length++;
-        runner = runner+1;
+    if(delim == NULL) {
+        char *tmp = *stringp;
+        *stringp = NULL;
+        return tmp;
     }
 
-    printf("length = %d.\n", length);
+    int l = 0;
+    while(str[l] != 0 && str[l] != delim[0]) {
+        l = l + sizeof(char);
+    }
 
-    char *token = (char *) malloc(sizeof(char)*length + 1);
-    if(token == NULL)
-        exit(EXIT_FAILURE);
+    *(str+l) = 0;
+    *stringp = str+l+sizeof(char);
+
+    return(tok);
 }
 
 int main(void)
 {
-    char test[] = "what-the-fuck";
-    char delim = '-';
-    char *result = my_strsep(&test, &delim);
+    char *test = "what-the-fuck";
+    char *delim = "-";
+    printf("Before execution of strsep.\n");
+    printf("stringp : %s.\n", test);
+    printf("delim : %c.\n", delim[0]);
+    char *result = my_strsep(&test, delim);
+    printf("After execution of strsep.\n");
+    printf("Result : %s.\n", result);
+    printf("stringp : %s.", test);
 
     return(EXIT_SUCCESS);
 }
