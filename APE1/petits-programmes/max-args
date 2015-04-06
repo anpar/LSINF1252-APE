@@ -1,0 +1,28 @@
+#!/bin/bash
+# Too slow, better to use a dichotomic algorithm. 
+
+echo "Compiling args.c..."
+gcc args.c -o args
+LAST_RET=0
+NUMBER_OF_ARGS=0
+# Looping until the return value of ./args is 1
+echo "Brute-force test (may take some time)..."
+while [ $LAST_RET -eq 0 ]
+do 
+    NUMBER_OF_ARGS=$((NUMBER_OF_ARGS+1))
+    # Printing everytime we get +1000 args
+    if (( $NUMBER_OF_ARGS % 1000 == 0 ))
+    then
+        echo $NUMBER_OF_ARGS
+    fi
+
+    echo -n "$NUMBER_OF_ARGS " >> args.in
+    ./args $(cat args.in)
+    #./args $(for(( i=0; i<$NUMBER_OF_ARGS; i++)); do echo -n "$i "; done)
+
+    LAST_RET=$?
+done
+echo "Maximum number of arguments is $NUMBER_OF_ARGS."
+echo "Removing args executable and args.in..."
+rm args
+rm args.in
