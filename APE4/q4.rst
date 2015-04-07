@@ -1,0 +1,8 @@
+        cmpl    0, %eax         ; eax = a - 0
+        jg      :true           ; si a - 0 > 0, jump vers true        
+        jle     :false          ; si a - 0 <= 0, jump vers false
+:true
+        movl    $1, (%ecx)      ; b = 1
+:false
+        movl    $0, (%ecx)      ; b = 0
+

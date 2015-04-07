@@ -1,0 +1,3 @@
+givemeone:
+        movl    $1, %eax        
+        ret

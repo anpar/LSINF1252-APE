@@ -1,0 +1,13 @@
+pushl   %eax
+-> La pile grandit et esp contient donc la valeur 0x08. La valeur
+contenue à l'adresse 0x08 (0xFF) est remplacée par la valeur contenue
+dans le registre eax, c'est à dire 0x02.
+pushl   %ebx 
+-> La pile grandit et %esp contient donc la valeur 0x04. La valeur
+contenue à l'adresse 0x04 (0x02) est remplacée par la valeur contenue
+dans le registre ebx, c'est à dire 0x03.
+popl    %ecx
+-> On déplace le contenu pointé par l'adresse contenue dans le
+registre esp (commet de la pile) vers le registre ecx, c'est à
+dire que ecx contient 0x03. La pile se réduit et le esp contient
+donc la valeur 0x08.

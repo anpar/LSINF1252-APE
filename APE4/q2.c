@@ -1,42 +1,64 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/time.h>
 
-#define SIZE 10000 
+/*
+ * On peut raisonnablement supposé que travailler
+ * avec deux tableaux séparés sera plus rapide.
+ * La localité spatiale implique que lorsque le processeur
+ * veut accèder au byte A, les byte de A-X à A+X sont
+ * chargés dans la mémoire cache également. Avec
+ * la solution avec deux tableaux séparés, pas de problème.
+ * Mais avec un tableau de structure, la totalité (ou une partie) des
+ * bytes supplémentaires transférés en mémoire cache sera
+ * utilisée pour stocker la chaine de caractère de
+ * la structure, inutile pour le calcule de la somme
+ *
+ * Code pour lé vérifier. Gros draft, pas terminé.
+ */
 
-int matrix[SIZE][SIZE];
+#define SIZE 100000
 
-int sum() { 
-	int sum=0; 
-	for(int i=0;i<SIZE;i++) { 
-		for(int j=0;j<SIZE;j++) { 
-			sum+=matrix[i][j]; 
-		} 
-	} 
-	
-	return sum;
- } 
+struct data {
+        float f;
+        char c[40];
+};
 
-int sum2() { 
-	int sum=0; 
-	for(int i=0;i<SIZE;i++) { 
-		for(int j=0;j<SIZE;j++) { 
-			sum+=matrix[j][i];
-		 } 
-	} 
-	return sum; 
+struct data *array_heavy = malloc(SIZE*sizeof(struct data));
+
+// Seconde méthode, un tableau contenant les floats
+float *array_light = malloc(SIZE*sizeof(float));
+
+void init() {
+        // Initialisation du tableau de structure
+        struct data item = {1.00, "lecoursdesystemeinformatiqueesttropcool"};
+        
+        for(int i=0; i<SIZE; i++) {
+                array_heavy[i] = item;
+                array_light[i] = 1.00;
+        }
+
 }
 
-int main(int argc, char *argv[]) meofday(&tv, NULL);
-        start = tv.tv_usec;
-        good_init();
-        gettimeofday(&tv, NULL);
-        end = tv.tv_usec;
-        printf("good_init takes %d micro-seconds.\n",(int) end-start);
-        gettimeofday(&tv, NULL);
-        start = tv.tv_usec;
-        bad_init();
-        gettimeofday(&tv, NULL);
-        end = tv.tv_usec;
-        printf("bad_init takes %d micro-seconds.\n",(int) end-start);
-        return(EXIT_SUCCESS);		
+long long sum_heavy() {
+        long long sum = 0;
+        for(int i=0; i<SIZE; i++) {
+                sum += (long long) (array_heavy[i]).f;
+        }
+        return(sum);
+}
+long long sum_light() {
+        long long sum = 0;
+        for(int i=0; i<SIZE; i++) {
+                sum += (long long) array_light[i];
+        }
+        return(sum);
+}
+
+int main(void)
+{
+        printf("sum_light returns: %lld.\n", sum_light());
+        printf("sum_heavy returns: %lld.\n", sum_heavy());
+
+        return(EXIT_SUCCESS);
 }
