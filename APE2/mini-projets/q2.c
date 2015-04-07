@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <math.h>
 
 /* Return t2-t1 in microseconds */
 long timeval_diff(struct timeval *t2, struct timeval *t1)
@@ -11,10 +12,10 @@ long timeval_diff(struct timeval *t2, struct timeval *t1)
 // n : number of iterations of the loop
 void compute(int n) {
   // long computation
-  double sum=0;
+  long long sum=0;
   int i;
   for(i=0;i<n;i++) {
-    sum=sum+i;
+    sum=sum+powl(sum, 1.1);
   }
 }
 
