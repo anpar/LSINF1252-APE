@@ -1,0 +1,4 @@
+D'après ``man pthread_exit`` : To allow other threads to continue 
+execution, the main  thread should   terminate   by  calling  
+pthread_exit()  rather  than exit(3).
+

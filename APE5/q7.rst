@@ -1,0 +1,5 @@
+Cela ne fonctionnera pas car le tableau est une variable
+locale de la fonction launch et ne sera donc plus accessible
+dans la fonction f. Il faudrait allouer v sur le tas avec
+malloc par exemple pour que ça fonctionne. Ou utiliser une
+variable globale pour v.
