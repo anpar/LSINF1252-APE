@@ -1,0 +1,21 @@
+D'après la man page de ``pthread_mutex_lock(3posix)``, si le le
+mutex est déjà bloqué, le thread appelant va rester bloqué jusqu'à
+ce que le mutex devienne disponible.
+``pthread_mutex_trylock(3posix)`` va quant à lui directement
+retourné si le mutex est déjà bloqué. 
+
+Discussion intéressante à ce sujet ici :
+http://stackoverflow.com/questions/9257458/why-is-pthread-mutex-lock-needed-when-pthread-mutex-trylock-is-there.
+
+En résumé, ``pthread_mutex_lock`` est plus efficace car il attend
+simplement que la ressource devienne disponible. Cependant, il
+bloque complètement le thread.
+
+En revanche, ``pthread_mutex_trylock`` dans une boucle comme
+dans la deuxième solution ne bloque pas complètement le thread.
+Cette solution peut permettre dans certains cas d'éviter des
+deadlocks. Cependant, une application bien designé n'a pas besoin
+de recourrir à cette méthode.
+
+La fichier q2.c contient également quelques différences entre
+ces deux méthodes.

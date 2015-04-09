@@ -1,0 +1,71 @@
+La sortie de Helgrind :
+^C==7192== ---Thread-Announcement------------------------------------------
+==7192== 
+==7192== Thread #2 was created
+==7192==    at 0x515543E: clone (clone.S:74)
+==7192==    by 0x4E44199: do_clone.constprop.3 (createthread.c:75)
+==7192==    by 0x4E458BA: pthread_create@@GLIBC_2.2.5 (createthread.c:245)
+==7192==    by 0x4C30C90: ??? (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x400ABB: main (in /home/anparis/Documents/LSINF1252-APE/APE6/q4)
+==7192== 
+==7192== ----------------------------------------------------------------
+==7192== 
+==7192== Thread #2: Exiting thread still holds 1 lock
+==7192==    at 0x4E4BF2C: __lll_lock_wait (lowlevellock.S:135)
+==7192==    by 0x4E47656: _L_lock_909 (pthread_mutex_lock.c:151)
+==7192==    by 0x4E4747E: pthread_mutex_lock (pthread_mutex_lock.c:79)
+==7192==    by 0x4C32072: pthread_mutex_lock (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x400961: philosophe (in /home/anparis/Documents/LSINF1252-APE/APE6/q4)
+==7192==    by 0x4C30E26: ??? (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x4E45181: start_thread (pthread_create.c:312)
+==7192==    by 0x515547C: clone (clone.S:111)
+==7192== 
+==7192== ---Thread-Announcement------------------------------------------
+==7192== 
+==7192== Thread #3 was created
+==7192==    at 0x515543E: clone (clone.S:74)
+==7192==    by 0x4E44199: do_clone.constprop.3 (createthread.c:75)
+==7192==    by 0x4E458BA: pthread_create@@GLIBC_2.2.5 (createthread.c:245)
+==7192==    by 0x4C30C90: ??? (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x400ABB: main (in /home/anparis/Documents/LSINF1252-APE/APE6/q4)
+==7192== 
+==7192== ----------------------------------------------------------------
+==7192== 
+==7192== Thread #3: Exiting thread still holds 1 lock
+==7192==    at 0x4E4BF2C: __lll_lock_wait (lowlevellock.S:135)
+==7192==    by 0x4E47656: _L_lock_909 (pthread_mutex_lock.c:151)
+==7192==    by 0x4E4747E: pthread_mutex_lock (pthread_mutex_lock.c:79)
+==7192==    by 0x4C32072: pthread_mutex_lock (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x400961: philosophe (in /home/anparis/Documents/LSINF1252-APE/APE6/q4)
+==7192==    by 0x4C30E26: ??? (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x4E45181: start_thread (pthread_create.c:312)
+==7192==    by 0x515547C: clone (clone.S:111)
+==7192== 
+==7192== ---Thread-Announcement------------------------------------------
+==7192== 
+==7192== Thread #4 was created
+==7192==    at 0x515543E: clone (clone.S:74)
+==7192==    by 0x4E44199: do_clone.constprop.3 (createthread.c:75)
+==7192==    by 0x4E458BA: pthread_create@@GLIBC_2.2.5 (createthread.c:245)
+==7192==    by 0x4C30C90: ??? (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x400ABB: main (in /home/anparis/Documents/LSINF1252-APE/APE6/q4)
+==7192== 
+==7192== ----------------------------------------------------------------
+==7192== 
+==7192== Thread #4: Exiting thread still holds 1 lock
+==7192==    at 0x4E4BF2C: __lll_lock_wait (lowlevellock.S:135)
+==7192==    by 0x4E47656: _L_lock_909 (pthread_mutex_lock.c:151)
+==7192==    by 0x4E4747E: pthread_mutex_lock (pthread_mutex_lock.c:79)
+==7192==    by 0x4C32072: pthread_mutex_lock (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x400961: philosophe (in /home/anparis/Documents/LSINF1252-APE/APE6/q4)
+==7192==    by 0x4C30E26: ??? (in /usr/lib/valgrind/vgpreload_helgrind-amd64-linux.so)
+==7192==    by 0x4E45181: start_thread (pthread_create.c:312)
+==7192==    by 0x515547C: clone (clone.S:111)
+==7192== 
+==7192== 
+==7192== For counts of detected and suppressed errors, rerun with: -v
+==7192== Use --history-level=approx or =none to gain increased speed, at
+==7192== the cost of reduced accuracy of conflicting-access information
+==7192== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 12631 from 109)
+Killed
+
