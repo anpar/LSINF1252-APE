@@ -1,0 +1,4 @@
+La fonction ``sem_wait(3)`` doit modifier la valeur du sémaphore
+qu'on lui donne en argument, pour ce faire elle a un besoin
+d'un pointeur vers ce sémaphore afin d'effectuer un passage
+par référence et non par valeur.

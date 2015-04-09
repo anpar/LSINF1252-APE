@@ -1,0 +1,5 @@
+Cette fonction pourrait éventuellement permettre d'éviter
+certains problèmes de deadlocks puisque le thread ne reste
+bloquer qu'un certain temps.
+
+ ::TODO : trouver des applications pratiques. 

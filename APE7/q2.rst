@@ -1,0 +1,6 @@
+D'après sa man page, ``sem_init(3)`` peut retourner une erreur
+si la valeur initiale du sémaphore est supérieur à SEM_VALUE_MAX.
+
+Elle peut également retourner une erreur si son argument pshared
+est non-nulle mais que le système ne supporte pas les sémaphores
+partagées entre processus.
