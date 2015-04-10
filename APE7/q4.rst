@@ -1,0 +1,9 @@
+Admettons qu'un premier producteur tente d'insérer un item,
+celui-ci va d'abord s'approprier le mutex, il va ensuite
+vérifier qu'il y a un bien un slot de libre avec sem_wait,
+comme c'est le premier producteur, il pourra continuer son
+exécution, insérer l'item et libérer le mutex. 
+
+Le problème de cette implémentation est que sem_wait est inclus
+dans la section critique. Par conséquent, le sémaphore empty ne
+remplit pas vraiment son rôle par rapport à la solution des notes.

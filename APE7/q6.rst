@@ -1,0 +1,23 @@
+A priori, la condition sur la variable ``count`` ne
+fait que lire la variable sans la modifier, on peut
+donc supposer qu'exclure cette lecture de la section
+critique comme proposé ne change rien. Le problème
+c'est que cette opération de lecture n'est peut-être 
+pas atomique en langage assembleur, et donc des
+problèmes peuvent survenir.
+
+SRC: http://www.openqnx.com/phpbbforum/viewtopic.php?t=11405
+
+De plus, il semblerait que, sans mutex, le compilateur
+puisse changer l'ordre des lectures/écritures pour
+des questions d'optimisations. Mieux vaut donc laisser
+cetter partie à l'intérieur d'un mutex. (à tester
+quand même)
+
+SRC: http://stackoverflow.com/questions/1525189/do-i-need-a-mutex-for-reading
+
+NOTE: apparement il y a tout un ensemble de fonctions
+qui permettent de réaliser des opérations atomiques.
+See: http://www.makelinux.net/books/lkd2/ch09lev1sec1
+
+

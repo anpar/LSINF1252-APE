@@ -1,0 +1,19 @@
+::TODO : generate an awesome graph with gnuplot.
+Les résulats varient fort d'une exécution à l'autre. Il faudrait
+peut-être augmenter la constante N du programme.
+
+Performances mutex:
+4, 25, 1182515
+4, 50, 1976398  8, 50, 2445997  16, 50, 2627583
+4, 75, 5335791
+4, 100, 3636003 (maybe not pertinent)
+
+Performances sémaphores:
+4, 25, 1030434
+4, 50, 1917343  8, 50, 2658589  16, 50, 2520789  32, 50, 2280399
+4, 75, 5003768
+4, 100, 3616172 (same remark)
+
+Les sémaphores semble gagner en performance avec le nombre de thread
+(plus que les mutex). Cependant les données sont difficiles à
+exploiter comme ça.

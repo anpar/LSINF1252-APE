@@ -1,0 +1,11 @@
+Lorsque le consommateur aura terminé la récupération
+de l'item, il va exécuter sem_post et donc libérer un slot.
+A cet instant, un producteur qui était bloqué par sem_wait
+dans l'attendre d'un slot libre pourra s'éxécuter. Seulement
+il sera à nouveau bloqué immédiatement après puisque le
+mutex est encore bloqué par le consommateur. 
+
+D'après moi, cette solution fonctionne mais n'a pas d'intèrêt
+puisqu'elle va débloquer/bloquer/débloquer chaque producteur
+au lieu de simplement le débloquer lorsque qu'un consommateur
+a libéré un slot.

@@ -1,0 +1,14 @@
+On reprend le code donné page 110 du syllabus.
+Le sémaphore rendez-vous est initialisé à 0.
+Les 12 premiers threads vont rester bloquer
+sur sem_wait(&rendezvous), à ce moment là, la valeur
+du sémaphore rendezvous sera donc de -12. Le 13ème
+thread va exécuter sem_post(&rendezvous) ce qui
+aura pour effet d'augmenter de 1 la valeur du
+sémaphore (-11) et de libérer un thread qui en libèrera
+un suivant et ainsi de suite. Le premier thread
+"libérateur" doit encore une fois exécuter sem_wait,
+le sémaphore vaudra alors à nouveau -12 et il reste
+encore 12 threads qui doivent exécuter sem_post.
+
+La valeur du sémaphore sera alors à nouveau nulle.
