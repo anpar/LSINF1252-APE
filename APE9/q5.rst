@@ -1,0 +1,2 @@
+D'après le syllabus, le noyau du système d'exploitation maintient une table
+de l'ensemble des fichiers qui sont ouverts par tous les processus actifs.

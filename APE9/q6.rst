@@ -1,0 +1,3 @@
+On pourrait obtenir l'id de processus du père avec getppid(), ensuite ouvrir
+le fichier /proc/<process id>/fd et conter le nombre de file descriptor avec
+open.

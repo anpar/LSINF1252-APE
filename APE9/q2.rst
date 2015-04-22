@@ -1,0 +1,20 @@
+dof:~/Documents/LSINF1252-APE/APE9 anparis$ stat /
+  File: ‘/’
+  Size: 4096            Blocks: 8          IO Block: 4096   directory
+Device: fd01h/64769d    Inode: 128         Links: 20
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-04-22 08:08:50.197515772 +0200
+Modify: 2015-04-03 13:00:18.272452022 +0200
+Change: 2015-04-03 13:00:18.272452022 +0200
+ Birth: -
+
+755 signifie :
+- le propriétaire a tous les droits ;
+- le groupe peut lire et exécuter ;
+- tout le monde peut lire et exécuter.
+
+Pour corriger cela, il faut éxécuter:
+$ chmod 711 /
+ou
+$ chmod 700 /
+Mais je n'ai pas le droit de faire ça (même avec sudo).
