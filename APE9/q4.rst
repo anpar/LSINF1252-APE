@@ -1,0 +1,11 @@
+dof:~/Documents/LSINF1252-APE/APE9 anparis$ stat /tmp
+  File: ‘/tmp’
+  Size: 4096            Blocks: 8          IO Block: 4096   directory
+Device: fd01h/64769d    Inode: 133         Links: 26
+Access: (1777/drwxrwxrwt)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-04-22 08:35:22.155865199 +0200
+Modify: 2015-04-22 08:54:54.561625735 +0200
+Change: 2015-04-22 08:54:54.561625735 +0200
+ Birth: -
+
+Tout le monde a tous les droit sur ce répertoire : 777.

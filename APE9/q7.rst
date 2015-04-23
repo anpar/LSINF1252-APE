@@ -1,0 +1,2 @@
+Après avoir testé ces deux ouvertures successives dans q7.c. Tout semble
+fonctionner correctement.

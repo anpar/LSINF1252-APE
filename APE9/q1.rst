@@ -1,0 +1,13 @@
+Sur un répertoire, la permission d'exécution est utilisée différemment.
+Elle contrôle l'accès, le listing, etc.
+
+777
+(rwxrwxrwx) No restrictions on permissions. Anybody may list files, create new files in the directory and delete files in the directory. Generally not a good setting.
+
+755
+(rwxr-xr-x) The directory owner has full access. All others may list the directory, but cannot create files nor delete them. This setting is common for directories that you wish to share with other users.
+
+700
+(rwx------) The directory owner has full access. Nobody else has any rights. This setting is useful for directories that only the owner may use and must be kept private from others.
+
+SRC: http://linuxcommand.org/lts0070.php
