@@ -1,0 +1,11 @@
+        .. code-block:: c
+                
+                ...
+                fork() // (1)
+                fork() // (2)
+                ...
+
+Lorsque le ``fork()`` de la ligne 1 s'éxécute, le processus fils
+identique doit encore créer un autre processus à la ligne 2. Le
+processus père quant à lui a encore un processus à créer aussi
+à la ligne 2. Il y aura donc en tout 3 proccessus créé.

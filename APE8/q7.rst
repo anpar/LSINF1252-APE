@@ -1,0 +1,8 @@
+Performances in microseconds:
+fork-perf:        8022278
+pthread-perf:      986428
+
+Ce résultat peut peut-être s'expliquer de la manière
+suivante. Pour créer un thread, on doit juste copier
+la stack et le contexte du thread principal tandis que
+pour créer un processus, on doit tout copier.

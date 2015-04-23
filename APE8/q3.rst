@@ -1,0 +1,5 @@
+On ne pourrait pas récupérer le statut d'un processus fils en
+particulier à l'aide de ``waitpid()`` (puisqu'on ne connait pas
+le pid du processus fils), on serait obliger d'utiliser ``waitpid()``
+avec comme premier argument 0 pour récupèrer n'importe quel
+processus fils.

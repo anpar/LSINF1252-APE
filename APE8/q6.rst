@@ -1,0 +1,18 @@
+C'est ce qu'on appelle une Fork Bomb :
+In computing, a fork bomb (also called rabbit virus or wabbit[1]) is
+a denial-of-service attack wherein a process continually replicates
+itself to deplete available system resources, causing resource
+starvation and slowing or crashing the system.
+
+Pour éviter ce genre de problème, il est possible de limiter
+le nombre de processus autorisé (nproc) pour un groupe d'utilisateur.
+Cela peut se faire en modifiant le fichier /etc/security/limits.conf
+qui par défaut contient ceci (à propos de nproc) :
+
+#@student        hard    nproc           20
+#@faculty        soft    nproc           20
+#@faculty        hard    nproc           50
+#ftp             hard    nproc           0
+
+NOTE: There are more examples in that file. Be careful with using the "all" (aka. "*") this will limit system accounts too.
+SRC: http://unix.stackexchange.com/questions/85411/how-to-prevent-fork-bomb
